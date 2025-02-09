@@ -12,12 +12,14 @@ Right now, using a stateful switch to turn on/off PC.
 On command:
 
 ```bash
-/home/pi/scripts/wake.sh xx:xx:xx:xx:xx:xx 192.168.1.xx 9 Joshua
+/home/pi/scripts/wake.sh xx:xx:xx:xx:xx:xx 192.168.50.xx 9 Joshua
 ```
 
 Off command:
 
 ```bash
-/home/pi/scripts/sleep.sh Joshua 192.168.1.xx
+/home/pi/scripts/sleep.sh Joshua 192.168.50.xx
 ```
 
+> [!NOTE]  
+> The [homebridge-cmdtriggerswitch](https://github.com/hans-1/homebridge-cmdtriggerswitch) plugin runs under the `sudo` account, so we need to make sure the `/home/homebridge/.ssh/known_hosts` file gets updated if the destination IP changes. The `-o "StrictHostKeyChecking accept-new"` option is used here to automatically accept the host key the first time it connects.

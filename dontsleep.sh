@@ -10,11 +10,11 @@ state=$3
 
 if [ "$state" == "on" ]; then
   # solution sourced from https://stackoverflow.com/a/70382385/4270353
-  timeout 5 ssh $user@$ip << EOF
+  timeout 5 ssh -o "StrictHostKeyChecking accept-new" $user@$ip << EOF
 "C:\Users\Joshua\Dropbox\Documents\Josh's Folder\bat\dontsleep.bat"
 EOF
 elif [ "$state" == "off" ]; then
-  timeout 5 ssh $user@$ip << EOF
+  timeout 5 ssh -o "StrictHostKeyChecking accept-new" $user@$ip << EOF
 taskkill /IM "DontSleep_x64.exe" /F
 EOF
 fi
